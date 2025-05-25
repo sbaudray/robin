@@ -20,7 +20,7 @@ $ npm install -g robin
 $ robin COMMAND
 running command...
 $ robin (--version)
-robin/0.0.0 linux-x64 node-v22.15.1
+robin/0.1.0 linux-x64 node-v20.19.1
 $ robin --help [COMMAND]
 USAGE
   $ robin COMMAND
@@ -67,7 +67,7 @@ EXAMPLES
   $ robin create add-users-table
 ```
 
-_See code: [src/commands/create.ts](https://github.com/sbaudray/robin/blob/v0.0.0/src/commands/create.ts)_
+_See code: [src/commands/create.ts](https://github.com/sbaudray/robin/blob/v0.1.0/src/commands/create.ts)_
 
 ## `robin help [COMMAND]`
 
@@ -407,5 +407,5 @@ EXAMPLES
   $ robin up
 ```
 
-_See code: [src/commands/up.ts](https://github.com/sbaudray/robin/blob/v0.0.0/src/commands/up.ts)_
+_See code: [src/commands/up.ts](https://github.com/sbaudray/robin/blob/v0.1.0/src/commands/up.ts)_
 <!-- commandsstop -->
