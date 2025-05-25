@@ -7,88 +7,67 @@ Migration tool for PostgreSQL
 [![Downloads/week](https://img.shields.io/npm/dw/robin.svg)](https://npmjs.org/package/robin)
 
 <!-- toc -->
-
-- [Usage](#usage)
-- [Commands](#commands)
+* [robin](#robin)
+* [Usage](#usage)
+* [Commands](#commands)
 <!-- tocstop -->
 
 # Usage
 
 <!-- usage -->
-
 ```sh-session
 $ npm install -g robin
 $ robin COMMAND
 running command...
 $ robin (--version)
-robin/0.0.0 linux-x64 node-v22.15.1
+robin/0.0.0 linux-x64 node-v20.19.1
 $ robin --help [COMMAND]
 USAGE
   $ robin COMMAND
 ...
 ```
-
 <!-- usagestop -->
 
 # Commands
 
 <!-- commands -->
+* [`robin create MIGRATION_NAME`](#robin-create-migration_name)
+* [`robin help [COMMAND]`](#robin-help-command)
+* [`robin plugins`](#robin-plugins)
+* [`robin plugins add PLUGIN`](#robin-plugins-add-plugin)
+* [`robin plugins:inspect PLUGIN...`](#robin-pluginsinspect-plugin)
+* [`robin plugins install PLUGIN`](#robin-plugins-install-plugin)
+* [`robin plugins link PATH`](#robin-plugins-link-path)
+* [`robin plugins remove [PLUGIN]`](#robin-plugins-remove-plugin)
+* [`robin plugins reset`](#robin-plugins-reset)
+* [`robin plugins uninstall [PLUGIN]`](#robin-plugins-uninstall-plugin)
+* [`robin plugins unlink [PLUGIN]`](#robin-plugins-unlink-plugin)
+* [`robin plugins update`](#robin-plugins-update)
+* [`robin up`](#robin-up)
 
-- [`robin hello PERSON`](#robin-hello-person)
-- [`robin hello world`](#robin-hello-world)
-- [`robin help [COMMAND]`](#robin-help-command)
-- [`robin plugins`](#robin-plugins)
-- [`robin plugins add PLUGIN`](#robin-plugins-add-plugin)
-- [`robin plugins:inspect PLUGIN...`](#robin-pluginsinspect-plugin)
-- [`robin plugins install PLUGIN`](#robin-plugins-install-plugin)
-- [`robin plugins link PATH`](#robin-plugins-link-path)
-- [`robin plugins remove [PLUGIN]`](#robin-plugins-remove-plugin)
-- [`robin plugins reset`](#robin-plugins-reset)
-- [`robin plugins uninstall [PLUGIN]`](#robin-plugins-uninstall-plugin)
-- [`robin plugins unlink [PLUGIN]`](#robin-plugins-unlink-plugin)
-- [`robin plugins update`](#robin-plugins-update)
+## `robin create MIGRATION_NAME`
 
-## `robin hello PERSON`
-
-Say hello
+Create a migration file in the "migrations" folder at the root of your project.
 
 ```
 USAGE
-  $ robin hello PERSON -f <value>
+  $ robin create MIGRATION_NAME
 
 ARGUMENTS
-  PERSON  Person to say hello to
-
-FLAGS
-  -f, --from=<value>  (required) Who is saying hello
+  MIGRATION_NAME  name of migration
 
 DESCRIPTION
-  Say hello
+  Create a migration file in the "migrations" folder at the root of your project.
+  The root of your project is the directory containing a package.json.
+  Migration files are SQL files, ordered by timestamp.
+  Write your migration as an SQL command, then execute it with "robin up".
+
 
 EXAMPLES
-  $ robin hello friend --from oclif
-  hello friend from oclif! (./src/commands/hello/index.ts)
+  $ robin create add_users_table
 ```
 
-_See code: [src/commands/hello/index.ts](https://github.com/sbaudray/robin/blob/v0.0.0/src/commands/hello/index.ts)_
-
-## `robin hello world`
-
-Say hello world
-
-```
-USAGE
-  $ robin hello world
-
-DESCRIPTION
-  Say hello world
-
-EXAMPLES
-  $ robin hello world
-  hello world! (./src/commands/hello/world.ts)
-```
-
-_See code: [src/commands/hello/world.ts](https://github.com/sbaudray/robin/blob/v0.0.0/src/commands/hello/world.ts)_
+_See code: [src/commands/create.ts](https://github.com/sbaudray/robin/blob/v0.0.0/src/commands/create.ts)_
 
 ## `robin help [COMMAND]`
 
@@ -400,4 +379,20 @@ DESCRIPTION
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.38/src/commands/plugins/update.ts)_
 
+## `robin up`
+
+Run all non-executed migrations
+
+```
+USAGE
+  $ robin up
+
+DESCRIPTION
+  Run all non-executed migrations
+
+EXAMPLES
+  $ robin up
+```
+
+_See code: [src/commands/up.ts](https://github.com/sbaudray/robin/blob/v0.0.0/src/commands/up.ts)_
 <!-- commandsstop -->
