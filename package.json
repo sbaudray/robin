@@ -1,7 +1,7 @@
 {
   "name": "robin",
   "description": "Migration tool for PostgreSQL",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "author": "sbaudray",
   "bin": {
     "robin": "./bin/run.js"
