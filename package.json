@@ -8,7 +8,7 @@
   },
   "bugs": "https://github.com/sbaudray/robin/issues",
   "scripts": {
-    "preinstall": "npm run build",
+    "prepare": "npm run build",
     "build": "shx rm -rf dist && tsc -b",
     "lint": "eslint",
     "postpack": "shx rm -f oclif.manifest.json",
