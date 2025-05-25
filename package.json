@@ -19,14 +19,12 @@
   "dependencies": {
     "@oclif/core": "^4",
     "@oclif/plugin-help": "^6",
-    "@oclif/plugin-plugins": "^5",
-    "dotenv": "^16.5.0"
+    "@oclif/plugin-plugins": "^5"
   },
   "devDependencies": {
     "@eslint/compat": "^1",
     "@oclif/prettier-config": "^0.2.1",
     "@oclif/test": "^4",
-    "@types/chai": "^4",
     "@types/node": "^18",
     "eslint": "^9",
     "eslint-config-oclif": "^6",

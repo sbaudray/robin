@@ -1,18 +1,28 @@
 import postgres from 'postgres'
 
-const sql = postgres({
-  host: process.env.PGHOST ?? 'localhost',
-  port: process.env.PORT ? parseInt(process.env.PORT) : 5432,
-  database: process.env.PGDATABASE,
-  username: process.env.PGUSERNAME,
-  password: process.env.PGPASSWORD,
-  onnotice(notice) {
-    if (notice.message.includes(`"robin_migrations" already exists`)) {
-      return
-    }
+interface Props {
+  host?: string
+  port?: string
+  database: string
+  username: string
+  password: string
+}
 
-    console.log(notice)
-  },
-})
+function sqlInstance(props: Props) {
+  return postgres({
+    host: props.host ?? 'localhost',
+    port: props.port ? parseInt(props.port) : 5432,
+    database: props.database,
+    username: props.username,
+    password: props.password,
+    onnotice(notice) {
+      if (notice.message.includes(`"robin_migrations" already exists`)) {
+        return
+      }
 
-export { sql }
+      console.log(notice)
+    },
+  })
+}
+
+export { sqlInstance }

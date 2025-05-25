@@ -1,32 +1,11 @@
 import path from 'node:path'
-import { migrationsFolderPath, writeFileSafe } from './file_system_helpers.js'
-import { sql } from './db.js'
+import { migrationsFolderPath } from './file_system_helpers.js'
 import { readdir } from 'node:fs/promises'
+import postgres from 'postgres'
 
 const TABLE_NAME = 'robin_migrations'
 
-function filename(name: string) {
-  const timestamp = new Date().toISOString().replace(/[-:.]/g, '').slice(0, 15)
-
-  return timestamp + '-' + name + '.sql'
-}
-
-function createMigrationFile({ name }: { name: string }) {
-  const filePath = path.join(migrationsFolderPath(), filename(name))
-
-  writeFileSafe({
-    filePath,
-    content: `-- WRITE YOUR SQL COMMAND HERE, FOR EXAMPLE:
--- CREATE TABLE IF NOT EXISTS orders (
---   id SERIAL PRIMARY KEY,
---   username VARCHAR(255)
--- );`,
-  })
-
-  console.log(`Created ${filePath}`)
-}
-
-async function runMigrations() {
+async function execUnrunMigrations(sql: postgres.Sql) {
   await sql`
     CREATE TABLE IF NOT EXISTS ${sql(TABLE_NAME)} (
       id varchar(100)
@@ -55,4 +34,4 @@ async function runMigrations() {
   }
 }
 
-export { createMigrationFile, runMigrations }
+export { execUnrunMigrations }

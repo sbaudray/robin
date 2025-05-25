@@ -20,7 +20,7 @@ $ npm install -g robin
 $ robin COMMAND
 running command...
 $ robin (--version)
-robin/0.0.0 linux-x64 node-v20.19.1
+robin/0.0.0 linux-x64 node-v22.15.1
 $ robin --help [COMMAND]
 USAGE
   $ robin COMMAND
@@ -64,7 +64,7 @@ DESCRIPTION
 
 
 EXAMPLES
-  $ robin create add_users_table
+  $ robin create add-users-table
 ```
 
 _See code: [src/commands/create.ts](https://github.com/sbaudray/robin/blob/v0.0.0/src/commands/create.ts)_
@@ -381,14 +381,27 @@ _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/
 
 ## `robin up`
 
-Run all non-executed migrations
+Executes all unrun migrations.
 
 ```
 USAGE
-  $ robin up
+  $ robin up -d <value> -u <value> -w <value> [-h <value>] [-p <value>]
+
+FLAGS
+  -d, --database=<value>  (required) POSTGRES DATABASE
+  -h, --host=<value>      POSTGRES HOST, defaults to localhost
+  -p, --port=<value>      POSTGRES PORT, defaults to 5432
+  -u, --username=<value>  (required) POSTGRES USERNAME
+  -w, --password=<value>  (required) POSTGRES PASSWORD
 
 DESCRIPTION
-  Run all non-executed migrations
+  Executes all unrun migrations.
+  You can use these environment variables instead of using CLI arguments:
+  PGHOST
+  PGPORT
+  PGUSERNAME
+  PGPASSWORD
+  PGDATABASE
 
 EXAMPLES
   $ robin up
